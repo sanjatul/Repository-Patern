@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using RepositoryPatern.Data.Access;
 using RepositoryPatern.Services.IRepositories;
 using RepositoryPatern.Services.Repositories;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +20,9 @@ maxRetryDelay: System.TimeSpan.FromSeconds(30),
 errorNumbersToAdd: null)
 ));
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration).CreateLogger();
+builder.Host.UseSerilog();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,7 +31,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
