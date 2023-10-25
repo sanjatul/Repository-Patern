@@ -3,6 +3,7 @@
     public interface IUnitOfWork : IDisposable
     {
         IProductRepository Product { get; }
+        IOrderDetailRepository OrderDetail { get; }
         Task SaveChangesAsync();
     }
 }
