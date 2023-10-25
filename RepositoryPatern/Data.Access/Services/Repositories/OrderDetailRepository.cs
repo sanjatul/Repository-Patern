@@ -13,7 +13,10 @@ namespace RepositoryPatern.Data.Access.Services.Repositories
         {
             _context = context;
         }
-
+        public override async Task<IEnumerable<OrderDetail>> GetAllAsync()
+        {
+            return await _dbSet.Include(od => od.Product).ToListAsync(); ;
+        }
         public async Task<bool> ApplyDiscountAsync(int orderId, decimal dicount)
         {
             var order=await _context.OrderDetails.FirstOrDefaultAsync(x=>x.OrderId==orderId);
