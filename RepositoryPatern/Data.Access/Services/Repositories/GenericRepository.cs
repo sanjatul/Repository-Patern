@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RepositoryPatern.Data.Access;
-using RepositoryPatern.Services.IRepositories;
+using RepositoryPatern.Data.Access.Data;
+using RepositoryPatern.Data.Access.Services.IRepositories;
 
-namespace RepositoryPatern.Services.Repositories
+namespace RepositoryPatern.Data.Access.Services.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

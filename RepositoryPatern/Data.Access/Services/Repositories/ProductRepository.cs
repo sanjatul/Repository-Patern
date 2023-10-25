@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RepositoryPatern.Data.Access;
+using RepositoryPatern.Data.Access.Data;
+using RepositoryPatern.Data.Access.Services.IRepositories;
 using RepositoryPatern.Models;
-using RepositoryPatern.Services.IRepositories;
 
-namespace RepositoryPatern.Services.Repositories
+namespace RepositoryPatern.Data.Access.Services.Repositories
 {
     public class ProductRepository : GenericRepository<Product>, IProductRepository
     {

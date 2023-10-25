@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RepositoryPatern.Models;
 
-namespace RepositoryPatern.Data.Access
+namespace RepositoryPatern.Data.Access.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -11,5 +11,6 @@ namespace RepositoryPatern.Data.Access
         {
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

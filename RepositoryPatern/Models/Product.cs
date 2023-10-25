@@ -1,10 +1,14 @@
-﻿namespace RepositoryPatern.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RepositoryPatern.Models
 {
     public class Product
     {
-        public int Id { get; set; }
+        [Key]
+        public int ProductId { get; set; }
+        [Required]
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public decimal Price { get; set; }
     }
 }

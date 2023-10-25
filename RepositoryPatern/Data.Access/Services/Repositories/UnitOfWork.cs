@@ -1,7 +1,7 @@
-﻿using RepositoryPatern.Data.Access;
-using RepositoryPatern.Services.IRepositories;
+﻿using RepositoryPatern.Data.Access.Data;
+using RepositoryPatern.Data.Access.Services.IRepositories;
 
-namespace RepositoryPatern.Services.Repositories
+namespace RepositoryPatern.Data.Access.Services.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -10,7 +10,7 @@ namespace RepositoryPatern.Services.Repositories
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            Product=new ProductRepository(_context);
+            Product = new ProductRepository(_context);
         }
 
         public async void Dispose()
@@ -20,7 +20,7 @@ namespace RepositoryPatern.Services.Repositories
 
         public async Task SaveChangesAsync()
         {
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }
